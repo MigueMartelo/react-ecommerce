@@ -15,9 +15,12 @@ const Home = () => {
 
   return (
     <Layout>
-      Home
-      {products &&
-        products.map((product) => <Card key={product.id} product={product} />)}
+      <div className='grid grid-cols-4 gap-4 w-full max-w-screen-lg'>
+        {products &&
+          products.map((product) => (
+            <Card key={product.id} product={product} />
+          ))}
+      </div>
     </Layout>
   );
 };
