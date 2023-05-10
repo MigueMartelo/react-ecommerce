@@ -9,6 +9,7 @@ import SignIn from '../SignIn';
 import { Navbar } from '../../components/Navbar';
 
 import './App.css';
+import { ShoppingCartProvider } from '../../Context/index';
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -25,10 +26,12 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ShoppingCartProvider>
   );
 };
 
