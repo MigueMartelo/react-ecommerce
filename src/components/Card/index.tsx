@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import { PlusIcon } from '@heroicons/react/24/outline';
+
 import { Product } from '../../interfaces/index';
 import { ShoppingCartContext } from '../../Context';
-import { PlusIcon } from '@heroicons/react/24/outline';
 
 interface CardProps {
   product: Product;
