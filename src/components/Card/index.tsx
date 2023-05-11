@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Product } from '../../interfaces/index';
 import { ShoppingCartContext } from '../../Context';
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
 
 interface CardProps {
   product: Product;
@@ -21,10 +22,10 @@ export const Card = ({ product }: CardProps) => {
           className='w-full h-full object-cover rounded-lg'
         />
         <div
-          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+          className='absolute top-0 right-0 flex justify-center items-center bg-white rounded-full m-2 p-0.5'
           onClick={() => context?.setCounter((prev: number) => prev + 1)}
         >
-          +
+          <PlusCircleIcon className='w-6 h-6 text-black' />
         </div>
       </figure>
       <p className='flex justify-between'>
