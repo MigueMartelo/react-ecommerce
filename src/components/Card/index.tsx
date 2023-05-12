@@ -16,9 +16,14 @@ export const Card = ({ product }: CardProps) => {
     context?.openProductDetail();
   };
 
-  const addProductToCart = (product: Product) => {
+  const addProductToCart = (
+    e: React.MouseEvent<HTMLDivElement>,
+    product: Product
+  ) => {
+    e.stopPropagation();
     context?.setCartProducts([...(context?.cartProducts || []), product]);
     context?.setCounter((prev: number) => prev + 1);
+    context?.openCheckoutSideMenu();
   };
 
   return (
@@ -37,7 +42,7 @@ export const Card = ({ product }: CardProps) => {
         />
         <div
           className='absolute top-0 right-0 flex justify-center items-center bg-white rounded-full m-2 p-0.5'
-          onClick={() => addProductToCart(product)}
+          onClick={(e) => addProductToCart(e, product)}
         >
           <PlusIcon className='w-5 h-5 text-black' />
         </div>

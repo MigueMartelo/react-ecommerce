@@ -95,7 +95,10 @@ export const Navbar = () => {
             Sign In
           </NavLink>
         </li>
-        <li className='flex justify-between items-center'>
+        <li
+          className='flex justify-between items-center cursor-pointer'
+          onClick={context?.openCheckoutSideMenu}
+        >
           <ShoppingCartIcon className='w-5 h-5 mr-1' /> {context?.counter}
         </li>
       </ul>

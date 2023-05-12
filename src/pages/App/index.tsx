@@ -7,9 +7,10 @@ import MyOrders from '../MyOrders';
 import NotFound from '../NotFound';
 import SignIn from '../SignIn';
 import { Navbar } from '../../components/Navbar';
+import { CheckoutSideMenu } from '../../components/CheckOutSideMenu';
+import { ShoppingCartProvider } from '../../Context/index';
 
 import './App.css';
-import { ShoppingCartProvider } from '../../Context/index';
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -30,6 +31,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <Navbar />
+        <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
   );
