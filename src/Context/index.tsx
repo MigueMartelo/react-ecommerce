@@ -9,6 +9,8 @@ type ShoppingCartContextType = {
   closeProductDetail: () => void;
   productToShow: Product | null;
   setProductToShow: React.Dispatch<React.SetStateAction<Product | null>>;
+  cartProducts: Product[] | null;
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[] | []>>;
 };
 
 interface ShoppingCartProviderProps {
@@ -21,8 +23,9 @@ export const ShoppingCartContext =
 export const ShoppingCartProvider = ({
   children,
 }: ShoppingCartProviderProps) => {
-  // Shopping Cart * Counter
+  // Shopping Cart * Counter / Cart Products
   const [counter, setCounter] = useState(0);
+  const [cartProducts, setCartProducts] = useState<Product[] | []>([]);
 
   // Product Detail * Open/Close product detail
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -42,6 +45,8 @@ export const ShoppingCartProvider = ({
         isProductDetailOpen,
         productToShow,
         setProductToShow,
+        cartProducts,
+        setCartProducts,
       }}
     >
       {children}

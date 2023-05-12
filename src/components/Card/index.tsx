@@ -16,6 +16,11 @@ export const Card = ({ product }: CardProps) => {
     context?.openProductDetail();
   };
 
+  const addProductToCart = (product: Product) => {
+    context?.setCartProducts([...(context?.cartProducts || []), product]);
+    context?.setCounter((prev: number) => prev + 1);
+  };
+
   return (
     <div
       className='bg-white cursor-pointer w-56 h-60'
@@ -32,7 +37,7 @@ export const Card = ({ product }: CardProps) => {
         />
         <div
           className='absolute top-0 right-0 flex justify-center items-center bg-white rounded-full m-2 p-0.5'
-          onClick={() => context?.setCounter((prev: number) => prev + 1)}
+          onClick={() => addProductToCart(product)}
         >
           <PlusIcon className='w-5 h-5 text-black' />
         </div>
