@@ -18,6 +18,24 @@ export const ProductDetail = () => {
           onClick={() => context?.closeProductDetail()}
         />
       </div>
+      <figure className='px-4'>
+        <img
+          className='w-full h-full rounded-lg object-cover'
+          src={context?.productToShow?.images[0]}
+          alt={context?.productToShow?.title}
+        />
+      </figure>
+      <p className='flex flex-col p-4'>
+        <span className='font-medium text-2xl'>
+          $ {context?.productToShow?.price}
+        </span>
+        <span className='font-medium text-lg'>
+          {context?.productToShow?.title}
+        </span>
+        <span className='font-light text-md'>
+          {context?.productToShow?.description}
+        </span>
+      </p>
     </aside>
   );
 };

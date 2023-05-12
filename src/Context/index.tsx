@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { Product } from '../interfaces';
 
 type ShoppingCartContextType = {
   counter: number;
@@ -6,6 +7,8 @@ type ShoppingCartContextType = {
   isProductDetailOpen: boolean;
   openProductDetail: () => void;
   closeProductDetail: () => void;
+  productToShow: Product | null;
+  setProductToShow: React.Dispatch<React.SetStateAction<Product | null>>;
 };
 
 interface ShoppingCartProviderProps {
@@ -18,11 +21,16 @@ export const ShoppingCartContext =
 export const ShoppingCartProvider = ({
   children,
 }: ShoppingCartProviderProps) => {
+  // Shopping Cart * Counter
   const [counter, setCounter] = useState(0);
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
+  // Product Detail * Open/Close product detail
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  // Product Detail * Show product detail
+  const [productToShow, setProductToShow] = useState<Product | null>(null);
 
   return (
     <ShoppingCartContext.Provider
@@ -32,6 +40,8 @@ export const ShoppingCartProvider = ({
         openProductDetail,
         closeProductDetail,
         isProductDetailOpen,
+        productToShow,
+        setProductToShow,
       }}
     >
       {children}
