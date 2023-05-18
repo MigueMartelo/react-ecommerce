@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { ShoppingCartContext } from '../../Context';
+import { OrderCard } from '../OrderCard';
+import { Product } from '../../interfaces';
 
 export const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
@@ -17,6 +19,16 @@ export const CheckoutSideMenu = () => {
           className='w-6 h-6 cursor-pointer'
           onClick={() => context?.closeCheckoutSideMenu()}
         />
+      </div>
+      <div className='px-6 overflow-y-scroll'>
+        {context?.cartProducts?.map((product: Product) => (
+          <OrderCard
+            key={product.id}
+            title={product.title}
+            imageUrl={product.images[0]}
+            price={product.price}
+          />
+        ))}
       </div>
     </aside>
   );
